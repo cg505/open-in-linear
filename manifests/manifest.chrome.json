@@ -8,9 +8,6 @@
     "tabs",
     "notifications"
   ],
-  "host_permissions": [
-    "https://api.linear.app/*"
-  ],
   "action": {
     "default_title": "Open in Linear"
   },
