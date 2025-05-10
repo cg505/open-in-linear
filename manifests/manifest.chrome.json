@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Open in Linear",
+  "description": "Open the corresponding Linear ticket for the current GitHub issue.",
+  "version": "0.1",
+  "permissions": [
+    "storage",
+    "tabs",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://api.linear.app/*"
+  ],
+  "action": {
+    "default_title": "Open in Linear"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html"
+}

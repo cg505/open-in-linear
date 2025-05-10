@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Open in Linear",
+  "description": "Open the corresponding Linear ticket for the current GitHub issue.",
+  "version": "0.1",
+  "permissions": [
+    "storage",
+    "tabs",
+    "notifications",
+    "https://api.linear.app/*"
+  ],
+  "browser_action": {
+    "default_title": "Open in Linear"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "open-in-linear@cg505.com",
+      "strict_min_version": "102.0"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Linear Extension Settings</title>
+  <style>
+    body { font-family: sans-serif; margin: 1rem; max-width: 600px; }
+    label, input { display: block; width: 100%; }
+    input { margin: 0.5rem 0 1rem 0; padding: 0.4rem; }
+    button { padding: 0.5rem 1rem; }
+    #status { margin-left: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Linear Settings</h1>
+  <p>Paste your <a href="https://linear.app/settings/api" target="_blank">Linear personal API key</a>. The extension stores it in your browser’s sync storage.</p>
+  <label for="token">API Token</label>
+  <input type="password" id="token" placeholder="lin_..." autocomplete="off" />
+  <button id="save">Save</button><span id="status"></span>
+
+  <script src="options.js"></script>
+</body>
+</html>
