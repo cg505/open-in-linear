@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Open in Linear",
   "description": "Open the corresponding Linear ticket for the current GitHub issue.",
-  "version": "0.1",
+  "version": "0.2",
   "permissions": [
     "storage",
     "tabs",
