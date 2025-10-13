@@ -11,12 +11,12 @@ const actionApi = chrome.action || chrome.browserAction;
 
 actionApi.onClicked.addListener(async (tab) => {
   const githubUrl = tab.url;
-  const issueRegex = /^https:\/\/github\.com\/.+\/.+\/issues\/\d+/;
-  if (!issueRegex.test(githubUrl)) {
+  const issueOrPrRegex = /^https:\/\/github\.com\/[^/]+\/[^/]+\/(issues|pull)\/\d+/;
+  if (!issueOrPrRegex.test(githubUrl)) {
     chrome.notifications.create({
       type: 'basic',
       title: 'Open Linear',
-      message: 'This page is not a GitHub issue.',
+      message: 'This page is not a GitHub issue or pull request.',
       iconUrl: ''
     });
     return;
@@ -71,14 +71,27 @@ actionApi.onClicked.addListener(async (tab) => {
 
   const json = await res.json();
   const nodes = json?.data?.issues?.nodes;
-  if (nodes && nodes.length > 0 && nodes[0].url) {
-    chrome.tabs.update(tab.id, { url: nodes[0].url });
-  } else {
+  const urls = Array.isArray(nodes) ? nodes.map((node) => node?.url).filter(Boolean) : [];
+
+  if (urls.length === 0) {
     chrome.notifications.create({
       type: 'basic',
       title: 'Open Linear',
       message: 'No matching Linear issue found.',
       iconUrl: ''
+    });
+    return;
+  }
+
+  if (urls.length == 1) {
+    chrome.tabs.update(tab.id, { url: urls[0] });
+    return;
+  }
+
+  for (const url of urls) {
+    chrome.tabs.create({
+      url,
+      index: typeof tab.index === 'number' ? tab.index + 1 : undefined
     });
   }
 });
