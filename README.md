@@ -2,6 +2,11 @@
 
 Quickly jump from a public GitHub issue to the corresponding private Linear ticket.
 
+Install from:
+
+* [Firefox Add-ons store](https://addons.mozilla.org/en-US/firefox/addon/open-in-linear/)
+* [Chrome Web Store](https://chromewebstore.google.com/detail/open-in-linear/dpdichoecmlelfjcmkcaaaahlanagklc)
+
 ## Prerequisites
 
 * **zip** CLI available in your PATH (most macOS/Linux systems have it; on Windows use Git Bash or WSL).
