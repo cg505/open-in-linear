@@ -10,9 +10,9 @@ async function getToken() {
 const actionApi = chrome.action || chrome.browserAction;
 
 actionApi.onClicked.addListener(async (tab) => {
-  const githubUrl = tab.url;
   const issueOrPrRegex = /^https:\/\/github\.com\/[^/]+\/[^/]+\/(issues|pull)\/\d+/;
-  if (!issueOrPrRegex.test(githubUrl)) {
+  const match = tab.url.match(issueOrPrRegex);
+  if (!match) {
     chrome.notifications.create({
       type: 'basic',
       title: 'Open Linear',
@@ -21,6 +21,7 @@ actionApi.onClicked.addListener(async (tab) => {
     });
     return;
   }
+  const githubUrl = match[0];
 
   const token = await getToken();
   if (!token) {
